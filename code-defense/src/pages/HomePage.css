@@ -1,0 +1,174 @@
+/* ==========================================
+   首页样式
+   ========================================== */
+
+.home-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 欢迎区域 */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome-section h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* 统计卡片网格 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card .stat-icon {
+  font-size: 1.5rem;
+}
+
+.stat-card svg {
+  color: inherit;
+}
+
+.stat-card.gold {
+  color: #f59e0b;
+}
+
+.stat-card.level {
+  color: #8b5cf6;
+}
+
+.stat-card.score {
+  color: #10b981;
+}
+
+.stat-card.tasks {
+  color: #3b82f6;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* 快速入口 */
+.quick-actions h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.action-card span {
+  font-weight: 600;
+  color: #333;
+}
+
+.action-card p {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+.action-card.game svg {
+  color: #8b5cf6;
+}
+
+.action-card.tasks svg {
+  color: #10b981;
+}
+
+.action-card.learn svg {
+  color: #3b82f6;
+}
+
+/* 收益区域 */
+.earnings-section h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.earnings-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.earnings-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.earnings-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}

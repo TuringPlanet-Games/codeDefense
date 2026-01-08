@@ -1,0 +1,30 @@
+/* ==========================================
+   全局 CSS Reset
+   ========================================== */
+
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-color: #333333;
+  --text-light: #666666;
+  --bg-color: #fafafa;
+  --card-color: #ffffff;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+}
