@@ -270,33 +270,50 @@ export const drawPlacementSpot = (
   isOccupied: boolean,
   isHovered: boolean = false
 ) => {
-  const size = 50;
+  const size = 55;  // 稍微增大尺寸
   
   ctx.save();
   
   if (!isOccupied) {
+    // 悬停时显示更明显的效果
     if (isHovered) {
-      ctx.shadowBlur = 15;
+      ctx.shadowBlur = 25;
       ctx.shadowColor = CYBER_COLORS.neonGreen;
+      
+      // 绘制外圈发光
+      ctx.strokeStyle = CYBER_COLORS.neonGreen;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.rect(x - size / 2 - 5, y - size / 2 - 5, size + 10, size + 10);
+      ctx.stroke();
     }
     
+    // 绘制放置点框
     rc.rectangle(x - size / 2, y - size / 2, size, size, {
       ...ROUGH_OPTIONS.circuit,
       stroke: isHovered ? CYBER_COLORS.neonGreen : CYBER_COLORS.neonBlue,
-      fill: 'rgba(0, 255, 255, 0.1)',
+      fill: isHovered ? 'rgba(0, 255, 0, 0.2)' : 'rgba(0, 255, 255, 0.1)',
       fillStyle: 'solid',
       strokeLineDash: [5, 5],
     });
     
     // 加号图标
     ctx.strokeStyle = isHovered ? CYBER_COLORS.neonGreen : CYBER_COLORS.neonBlue;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = isHovered ? 3 : 2;
     ctx.beginPath();
-    ctx.moveTo(x - 10, y);
-    ctx.lineTo(x + 10, y);
-    ctx.moveTo(x, y - 10);
-    ctx.lineTo(x, y + 10);
+    ctx.moveTo(x - 12, y);
+    ctx.lineTo(x + 12, y);
+    ctx.moveTo(x, y - 12);
+    ctx.lineTo(x, y + 12);
     ctx.stroke();
+    
+    // 悬停时显示提示文字
+    if (isHovered) {
+      ctx.font = '10px monospace';
+      ctx.fillStyle = CYBER_COLORS.neonGreen;
+      ctx.textAlign = 'center';
+      ctx.fillText('CLICK', x, y + size / 2 + 15);
+    }
   }
   
   ctx.restore();

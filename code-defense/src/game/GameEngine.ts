@@ -136,36 +136,60 @@ export class GameEngine {
     this.canvas.addEventListener('click', this.handleClick.bind(this));
   }
 
+  // 获取画布相对坐标（考虑缩放）
+  private getCanvasCoordinates(e: MouseEvent): { x: number; y: number } {
+    const rect = this.canvas.getBoundingClientRect();
+    const scaleX = this.canvas.width / rect.width;
+    const scaleY = this.canvas.height / rect.height;
+    return {
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY,
+    };
+  }
+
   // 处理鼠标移动
   private handleMouseMove(e: MouseEvent): void {
-    const rect = this.canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const { x, y } = this.getCanvasCoordinates(e);
     
     // 检查是否悬停在放置点上
     this.hoveredSpot = null;
     for (const spot of this.placementSpots) {
       if (!spot.isOccupied) {
         const distance = Math.sqrt(Math.pow(x - spot.x, 2) + Math.pow(y - spot.y, 2));
-        if (distance < 30) {
+        if (distance < 35) {  // 增大检测范围
           this.hoveredSpot = spot;
           break;
         }
       }
     }
     
-    this.canvas.style.cursor = this.hoveredSpot && this.selectedDeveloperType ? 'pointer' : 'default';
+    // 更新光标样式
+    if (this.selectedDeveloperType) {
+      this.canvas.style.cursor = this.hoveredSpot ? 'pointer' : 'not-allowed';
+    } else {
+      this.canvas.style.cursor = 'default';
+    }
+    
+    // 实时渲染以显示悬停效果
+    this.render();
   }
 
   // 处理点击
   private handleClick(e: MouseEvent): void {
-    const rect = this.canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const { x, y } = this.getCanvasCoordinates(e);
     
-    // 如果选择了塔类型，尝试放置
-    if (this.selectedDeveloperType && this.hoveredSpot) {
-      this.placeDeveloper(this.selectedDeveloperType, this.hoveredSpot);
+    // 如果选择了塔类型
+    if (this.selectedDeveloperType) {
+      // 查找点击位置附近的放置点
+      for (const spot of this.placementSpots) {
+        if (!spot.isOccupied) {
+          const distance = Math.sqrt(Math.pow(x - spot.x, 2) + Math.pow(y - spot.y, 2));
+          if (distance < 35) {
+            this.placeDeveloper(this.selectedDeveloperType, spot);
+            return;
+          }
+        }
+      }
       return;
     }
     

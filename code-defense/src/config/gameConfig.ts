@@ -25,44 +25,58 @@ export const GAME_CONFIG = {
 // 路径配置 - 匹配设计图的路径
 export const LEVEL_PATHS: Record<number, PathPoint[]> = {
   1: [
-    { x: 40, y: 520 },   // Data Core 起点
-    { x: 40, y: 200 },   // 向上
-    { x: 200, y: 200 },  // 向右
-    { x: 200, y: 120 },  // 向上
-    { x: 480, y: 120 },  // 向右
-    { x: 480, y: 400 },  // 向下
-    { x: 640, y: 400 },  // 向右
-    { x: 640, y: 520 },  // 向下
-    { x: 920, y: 520 },  // Data Port 终点
+    { x: 80, y: 560 },    // Data Core 起点 (左下角)
+    { x: 80, y: 180 },    // 向上
+    { x: 280, y: 180 },   // 向右
+    { x: 280, y: 120 },   // 向上
+    { x: 560, y: 120 },   // 向右
+    { x: 560, y: 320 },   // 向下
+    { x: 640, y: 320 },   // 向右
+    { x: 640, y: 400 },   // 向下
+    { x: 880, y: 400 },   // 向右
+    { x: 880, y: 560 },   // 向下
+    { x: 920, y: 560 },   // Data Port 终点 (右下角)
   ],
 };
 
-// 放置点配置 - 可以放置塔的位置
+// 放置点配置 - 根据截图中的位置更新
 export const PLACEMENT_SPOTS: PlacementSpot[] = [
-  // 左侧区域
-  { x: 120, y: 280, isOccupied: false },
-  { x: 120, y: 360, isOccupied: false },
-  { x: 120, y: 440, isOccupied: false },
+  // 左侧区域 - Data Core 附近
+  { x: 160, y: 260, isOccupied: false },
+  { x: 160, y: 340, isOccupied: false },
+  { x: 160, y: 420, isOccupied: false },
+  { x: 160, y: 500, isOccupied: false },
   
-  // 上方区域
-  { x: 280, y: 200, isOccupied: false },
+  // 第一个拐角上方
+  { x: 200, y: 100, isOccupied: false },
+  
+  // 上方水平路径两侧
+  { x: 360, y: 60, isOccupied: false },
+  { x: 440, y: 60, isOccupied: false },
   { x: 360, y: 200, isOccupied: false },
-  { x: 400, y: 40, isOccupied: false },
+  { x: 440, y: 200, isOccupied: false },
   
   // 中间区域
-  { x: 320, y: 320, isOccupied: false },
-  { x: 400, y: 320, isOccupied: false },
-  { x: 560, y: 280, isOccupied: false },
-  { x: 560, y: 360, isOccupied: false },
+  { x: 320, y: 280, isOccupied: false },
+  { x: 400, y: 280, isOccupied: false },
+  { x: 480, y: 280, isOccupied: false },
+  { x: 320, y: 360, isOccupied: false },
+  { x: 400, y: 360, isOccupied: false },
+  { x: 480, y: 360, isOccupied: false },
   
-  // 右侧区域
+  // 右侧垂直路径附近
+  { x: 640, y: 200, isOccupied: false },
+  { x: 720, y: 240, isOccupied: false },
   { x: 720, y: 320, isOccupied: false },
-  { x: 720, y: 440, isOccupied: false },
-  { x: 800, y: 440, isOccupied: false },
+  
+  // 右下区域
+  { x: 720, y: 480, isOccupied: false },
+  { x: 800, y: 480, isOccupied: false },
   
   // 底部区域
-  { x: 280, y: 520, isOccupied: false },
-  { x: 480, y: 520, isOccupied: false },
+  { x: 280, y: 480, isOccupied: false },
+  { x: 400, y: 480, isOccupied: false },
+  { x: 560, y: 480, isOccupied: false },
 ];
 
 // 关卡配置 - 赛博朋克主题
