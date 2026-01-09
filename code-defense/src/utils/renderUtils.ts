@@ -148,10 +148,10 @@ export const drawDeveloper = (
   
   const icons: Record<DeveloperType, string> = {
     JuniorDev: '👨‍💻',
-    SeniorArchitect: '🖥️',
-    UIDesigner: '🎨',
-    DataEngineer: '📊',
-    SecurityExpert: '🛡️',
+    SeniorArchitect: '👩🏼‍🔬',
+    UIDesigner: '💃🏿',
+    DataEngineer: '🥷',
+    SecurityExpert: '🤖',
   };
   
   ctx.fillText(icons[type], x, y);
@@ -169,9 +169,9 @@ export const drawDeveloper = (
   ctx.restore();
 };
 
-// 绘制 Bug 敌人
+// 绘制 Bug 敌人 - 使用 emoji
 export const drawBug = (
-  rc: ReturnType<typeof rough.canvas>,
+  _rc: ReturnType<typeof rough.canvas>,
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -180,7 +180,7 @@ export const drawBug = (
   maxHp: number
 ) => {
   const color = CYBER_COLORS.bugColors[type];
-  const size = type === 'SystemCrash' ? 60 : 30;
+  const size = type === 'SystemCrash' ? 45 : 30;
   
   ctx.save();
   
@@ -188,60 +188,19 @@ export const drawBug = (
   ctx.shadowBlur = 15;
   ctx.shadowColor = color;
   
-  // 根据类型绘制不同形状
-  switch (type) {
-    case 'Typo':
-      // 小虫子 - 椭圆形
-      rc.ellipse(x, y, size, size * 0.6, {
-        ...ROUGH_OPTIONS.sketchy,
-        stroke: color,
-        fill: color,
-        fillStyle: 'hachure',
-      });
-      break;
-      
-    case 'NullPointerException':
-      // 幽灵 - 不规则形状
-      rc.path(`M ${x - 15} ${y + 15} Q ${x - 20} ${y - 10} ${x} ${y - 20} Q ${x + 20} ${y - 10} ${x + 15} ${y + 15} Z`, {
-        ...ROUGH_OPTIONS.sketchy,
-        stroke: '#ffffff',
-        fill: 'rgba(255, 255, 255, 0.3)',
-        fillStyle: 'solid',
-      });
-      break;
-      
-    case 'MemoryLeak':
-      // 粘液怪 - 不规则圆形
-      rc.circle(x, y, size, {
-        ...ROUGH_OPTIONS.sketchy,
-        stroke: color,
-        fill: color,
-        fillStyle: 'cross-hatch',
-      });
-      // 滴落效果
-      rc.circle(x - 10, y + 20, 8, {
-        stroke: color,
-        fill: color,
-        fillStyle: 'solid',
-      });
-      break;
-      
-    case 'SystemCrash':
-      // 机器人 Boss - 矩形身体
-      rc.rectangle(x - 25, y - 30, 50, 60, {
-        ...ROUGH_OPTIONS.neon,
-        stroke: '#ff0000',
-        fill: 'rgba(100, 100, 100, 0.8)',
-        fillStyle: 'solid',
-      });
-      // 眼睛
-      ctx.fillStyle = '#ff0000';
-      ctx.beginPath();
-      ctx.arc(x - 10, y - 10, 5, 0, Math.PI * 2);
-      ctx.arc(x + 10, y - 10, 5, 0, Math.PI * 2);
-      ctx.fill();
-      break;
-  }
+  // Bug emoji 图标
+  const bugIcons: Record<BugType, string> = {
+    Typo: '🐛',
+    NullPointerException: '👻',
+    MemoryLeak: '🦠',
+    SystemCrash: '🤖',
+  };
+  
+  // 绘制 emoji
+  ctx.font = `${size}px serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(bugIcons[type], x, y);
   
   // 血条
   const hpBarWidth = size + 10;
