@@ -5,7 +5,3 @@
 [![](https://github.com/user-attachments/assets/4904d5c3-fe88-44e8-90b4-f40e5072421b)](https://youtu.be/tb3-nHJOdVQ?si=cFXac7nwqbbMJi-t)
 
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/I-0AzosEmIk?si=c2MWFvb2u14pXhu2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-https://youtu.be/tb3-nHJOdVQ?si=cFXac7nwqbbMJi-t
